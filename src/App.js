@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import FormConstructorPage from './pages/FormConstructorPage';
+import SavedFormsPage from './pages/SavedFormsPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <div className="App">
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Конструктор формы</Link>
+                        </li>
+                        <li>
+                            <Link to="/saved-forms">Сохраненные формы</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Routes>
+                    <Route path="/" element={<FormConstructorPage />} />
+                    <Route path="/saved-forms" element={<SavedFormsPage />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
